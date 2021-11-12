@@ -1,0 +1,31 @@
+Docker 실행중 에러
+
+1. System has not been booted with systemd as init system (PID 1). Can't operate.
+
+
+root@DESKTOP-39K1MRD:/mnt/c/Users/user# systemctl status ssh
+System has not been booted with systemd as init system (PID 1). Can't operate.
+root@DESKTOP-39K1MRD:/mnt/c/Users/user#
+
+systemctl 사용이 가능한 centos 이미지를 받아서 사용하면 된다. 
+
+PS D:\docker> docker pull centos/systemd
+Using default tag: latest
+latest: Pulling from centos/systemd
+a02a4930cb5d: Pull complete                                                                                                                                                                                                                                                      
+c702ea4a22bc: Pull complete                                                                                                                                                                                                                                                               Digest: sha256:09db0255d215ca33710cc42e1a91b9002637eeef71322ca641947e65b7d53b58
+Status: Downloaded newer image for centos/systemd:latest
+docker.io/centos/systemd:latest
+
+PS D:\docker> docker run --privileged -d --name appcentos centos/systemd init
+98b6618b1fb6d0393be04df40ac06b60b7b524c94724c2043fb28a68e3b18f72
+PS D:\docker> docker exec -it appcentos bash
+[root@98b6618b1fb6 /]#
+
+
+docker run --privileged를 이용해 컨테이너를 사용하면 모든 장치에 접근할 수 있을뿐만 아니라 
+호스트 컴퓨터 커널의 대부분의 기능을 사용할 수 있습니다. 
+systemctl과 같은 프로그램이나 도커 컨테이너 내부에서 도커를 사용할 수 있습니다.
+
+
+출처: https://blog.jojonari.dev/entry/ErrorSystem-has-not-been-booted-with-systemd-as-init-system-PID-1-Cant-operate 

@@ -1,0 +1,45 @@
+docker 명령어 정리
+
+# yum install nginx -y
+# curl https://get.volta.sh | bash
+# volta install node@14
+# volta install pm2
+# yum install python3 -y
+
+/etc/nginx/nginx.conf
+
+# nginx -s reload
+$ exit
+$ Ctrl+P+Q (Detach)
+
+https://docs.docker.com/docker-for-windows/install/
+
+# docker용 이미지 검색및 내려 받기
+docker --help
+docker pull ubuntu
+docker search python
+docker container run -it --name "test1" ubuntu /bin/cal
+docker container run -itd --name ub ubuntu
+docker container attach ub
+
+docker pull nginx
+docker images
+docker run --name webserver -d -p 80:80 nginx
+docker ps -a
+docker start webserver
+docker stop webserver
+docker  rm webserver
+docker rmi mysql
+docker rename webserver nginxserver
+docker container cp nginxserver:/etc/nginx/nginx.conf .
+
+# docker 이미지 새로 만들기
+docker commit mydealdev mydealdevimg
+docker create -it --name "imgtest" -p 80:80 mydealdevimg
+docker start imgtest
+docker attach imgtest
+
+docker save -o mydealdevimg.tar mydealdevimg
+
+docker load -i mydealdevimg.tar
+

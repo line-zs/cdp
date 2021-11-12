@@ -1,0 +1,12 @@
+https://rook.io/
+https://rook.io/docs/rook/v1.7/ceph-quickstart.html
+https://minikube.sigs.k8s.io/docs/
+
+minikube start --cpus=2 --memory=3000 --kubernetes-version=v1.19.14 --driver=hyperv
+minikube start --cpus=2 --memory=3000 --kubernetes-version=v1.19.14 --driver=virtualbox
+
+https://kubernetes.io/ko/docs/tasks/tools/install-kubectl-linux/
+curl -LO https://dl.k8s.io/release/v1.19.14/bin/linux/amd64/kubectl
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+
